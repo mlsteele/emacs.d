@@ -1,9 +1,9 @@
 ;;; Set up the package system.
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 (defvar config-required-packages nil "Packages that should be installed by the config.")
@@ -24,6 +24,7 @@
     ag
     sudo-edit
     projectile
+    go-projectile
     evil-surround
     centered-cursor-mode
     auto-complete
@@ -50,6 +51,7 @@
     vimrc-mode
     yaml-mode
     systemd
+    sass-mode
     ))
 
 ;;; Refresh the package list if anything is not installed.
@@ -61,8 +63,10 @@
   (package-install package-name))
 
 ;;; Make packages available from the lisp dir.
+(require 'coq-stalker-mode)
 (add-to-list 'load-path (expand-file-name "lisp/emacs-colorpicker" user-emacs-directory))
 (require 'colorpicker)
-(require 'coq-stalker-mode)
+(add-to-list 'load-path (expand-file-name "lisp/emacs-crystal-mode" user-emacs-directory))
+(require 'crystal-mode)
 (add-to-list 'load-path (expand-file-name "lisp/urweb" user-emacs-directory))
 (require 'urweb-mode)

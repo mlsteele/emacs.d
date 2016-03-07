@@ -20,7 +20,6 @@
   (modify-syntax-entry ?_ "w"))
 (add-hook 'change-major-mode-hook 'my-underscore-syntax)
 
-
 ;;; Use diff-mode for git commit.
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . diff-mode))
 
@@ -36,6 +35,9 @@
 ;;; Use conf-mode for .gitconfig
 (add-to-list 'auto-mode-alist '(".gitconfig" . conf-mode))
 
+;;; Use sass mode for sass.
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
+
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
 
@@ -46,3 +48,7 @@
 
 ;;; Make yes/no prompts briefer.
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;;; Save bookmarks file automatically.
+(defadvice bookmark-set (after save-bookmarks-automatically activate)
+  (bookmark-save))
