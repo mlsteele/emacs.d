@@ -38,6 +38,9 @@
 ;;; Use sass mode for sass.
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
 
+;;; Use XML for ROS launch files
+(add-to-list 'auto-mode-alist '("\\.launch\\'" . xml-mode))
+
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
 
@@ -52,3 +55,6 @@
 ;;; Save bookmarks file automatically.
 (defadvice bookmark-set (after save-bookmarks-automatically activate)
   (bookmark-save))
+
+;;; Don't truncate lines by default
+(set-default 'truncate-lines t)

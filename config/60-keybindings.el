@@ -10,6 +10,7 @@
 (define-key evil-insert-state-map (kbd "C-p") (lambda () (interactive)
   (call-interactively 'evil-paste-after) (evil-normal-state)))
 (define-key evil-normal-state-map (kbd "zx") 'evil-jump-item)
+(define-key evil-normal-state-map (kbd "C-m") 'rotate-word-at-point)
 
 ;;; Buffer navigation.
 (define-key evil-normal-state-map (kbd ",f") 'find-file)
@@ -69,6 +70,10 @@
 ;;; Cider mode.
 ;; (define-key evil-normal-state-map (kbd ",e") 'cider-eval-last-sexp)
 (define-key evil-normal-state-map (kbd ",d") 'cider-doc)
+(defun my-clojure-mode-hook ()
+  (interactive)
+  ;; (define-key evil-normal-state-map (kbd ",e") 'cider-eval-last-sexp))
+  (define-key evil-normal-state-map (kbd ",e") 'cider-pprint-eval-last-sexp))
 
 ;;; Coq proof mode
 (defun my-proof-general-mode-hook ()
@@ -94,3 +99,16 @@
   (interactive)
   (define-key eshell-mode-map (kbd "C-p") 'eshell-previous-input))
 (add-hook 'eshell-mode-hook 'my-eshell-mode-setup-keys)
+
+;;; Go mode.
+(defun my-go-mode-hook ()
+  ; Call Gofmt before saving
+  ; (add-hook 'before-save-hook 'gofmt-before-save)
+  ; Customize compile command to run go build
+  (if (not (string-match "go" compile-command))
+      (set (make-local-variable 'compile-command)
+	   "go build -v && go vet"))
+  ; Godef jump key binding
+  ; (local-set-key (kbd "M-.") 'godef-jump))
+  )
+(add-hook 'go-mode-hook 'my-go-mode-hook)

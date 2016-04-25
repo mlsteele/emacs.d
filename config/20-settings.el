@@ -32,3 +32,7 @@
 (add-to-list 'projectile-globally-ignored-directories "node_modules")
 
 (setq inhibit-startup-screen t)
+
+;;; Add Go to path.
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/go/bin"))
+(setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/go/bin")))
