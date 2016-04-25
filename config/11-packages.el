@@ -1,9 +1,9 @@
 ;;; Set up the package system.
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+         '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
+         '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 (defvar config-required-packages nil "Packages that should be installed by the config.")
@@ -55,6 +55,7 @@
     yaml-mode
     systemd
     sass-mode
+    nginx-mode
     ))
 
 ;;; Refresh the package list if anything is not installed.
