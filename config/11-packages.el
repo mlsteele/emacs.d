@@ -30,11 +30,14 @@
     auto-complete
     paredit
     evil-paredit
+    default-text-scale
     yasnippet
     smart-mode-line
     smart-mode-line-powerline-theme
     cider
+
     go-mode
+    go-autocomplete
     haskell-mode
     markdown-mode
     scala-mode
@@ -61,6 +64,9 @@
 ;;; Install each package.
 (dolist (package-name config-required-packages)
   (package-install package-name))
+
+;; (with-eval-after-load 'go-mode
+;;    (require 'go-autocomplete))
 
 ;;; Make packages available from the lisp dir.
 (require 'coq-stalker-mode)
