@@ -24,6 +24,8 @@
  ;; scroll 8 lines other window using M-<next>/M-<prior>
  helm-scroll-amount 8
  helm-ff-file-name-history-use-recentf t
+ ;; Circular movement in helm.
+ helm-move-to-line-cycle-in-source t
  )
 
 (helm-mode 1)
