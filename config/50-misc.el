@@ -5,7 +5,8 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 ;;; Cleanup spacing.
-(add-hook 'before-save-hook 'whitespace-cleanup)
+; (add-hook 'before-save-hook 'whitespace-cleanup)
+; (remove-hook 'before-save-hook 'whitespace-cleanup)
 
 ;;; Enable autocompletion.
 (global-auto-complete-mode 1)
@@ -32,6 +33,9 @@
 ;;; Use python mode for pythonrc.
 (add-to-list 'auto-mode-alist '(".pythonrc" . python-mode))
 
+;;; Use coffee mode for iced coffee script.
+(add-to-list 'auto-mode-alist '(".iced" . coffee-mode))
+
 ;;; Use conf-mode for .gitconfig
 (add-to-list 'auto-mode-alist '(".gitconfig" . conf-mode))
 
@@ -41,8 +45,11 @@
 ;;; Use XML for ROS launch files
 (add-to-list 'auto-mode-alist '("\\.launch\\'" . xml-mode))
 
+;;; Use js mode for avdl. Because it's good enough and avdl mode is broken.
+(add-to-list 'auto-mode-alist '(".avdl" . js-mode))
+
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "google-chrome")
+	  browse-url-generic-program "google-chrome")
 
 (require 'ansi-color)
 (defun display-ansi-colors ()
@@ -58,3 +65,14 @@
 
 ;;; Don't truncate lines by default
 (set-default 'truncate-lines t)
+
+;;; Set $GOPATH
+(let ((gopath "/Users/miles/go"))
+  (setenv "GOPATH" gopath)
+  (setenv "PATH" (concat (getenv "PATH") ":" (concat gopath "/bin")))
+  (setq exec-path (append exec-path (list gopath))))
+
+;;; Load the go oracle
+(load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
+
+(winner-mode)

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: assert interface implementationd
+# key: implements
+# --
+var _ ${1:Interface} = (*${2:Type})(nil)

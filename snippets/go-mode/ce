@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: call with err
+# key: ce
+# --
+${1:res}, err := $0

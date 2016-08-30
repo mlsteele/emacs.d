@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: keybase debug
+# key: gdebug
+# --
+g.Log.Debug("${1:%v}"${2:})$0

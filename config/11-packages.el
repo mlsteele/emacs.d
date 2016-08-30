@@ -1,62 +1,63 @@
 ;;; Set up the package system.
 (require 'package)
 (add-to-list 'package-archives
-         '("melpa" . "http://melpa.milkbox.net/packages/") t)
+		 '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
-         '("marmalade" . "http://marmalade-repo.org/packages/") t)
+		 '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 (defvar config-required-packages nil "Packages that should be installed by the config.")
 (setq config-required-packages
   '(
-    evil
-    evil-escape
-    linum-relative
-    helm
-    helm-descbinds
-    helm-projectile
-    helm-ag
-    powerline
-    powerline-evil
-    solarized-theme
-    ace-jump-mode
-    evil-jumper
-    ag
-    sudo-edit
-    projectile
-    go-projectile
-    evil-surround
-    centered-cursor-mode
-    auto-complete
-    paredit
-    evil-paredit
-    default-text-scale
-    yasnippet
-    smart-mode-line
-    smart-mode-line-powerline-theme
-    cider
+	evil
+	evil-escape
+	linum-relative
+	helm
+	helm-descbinds
+	helm-projectile
+	helm-ag
+	powerline
+	powerline-evil
+	solarized-theme
+	ace-jump-mode
+	evil-jumper
+	ag
+	sudo-edit
+	projectile
+	go-projectile
+	evil-surround
+	centered-cursor-mode
+	auto-complete
+	paredit
+	evil-paredit
+	default-text-scale
+	yasnippet
+	smart-mode-line
+	smart-mode-line-powerline-theme
+	cider
 
-    go-mode
-    go-autocomplete
-    haskell-mode
-    markdown-mode
-    scala-mode
-    jsx-mode
-    less-css-mode
-    coffee-mode
-    elixir-mode
-    glsl-mode
-    haskell-emacs
-    idle-highlight-mode
-    lua-mode
-    racket-mode
-    rust-mode
-    vimrc-mode
-    yaml-mode
-    systemd
-    sass-mode
-    nginx-mode
-    ))
+	go-mode
+	go-autocomplete
+	haskell-mode
+	markdown-mode
+	scala-mode
+	jsx-mode
+	less-css-mode
+	coffee-mode
+	elixir-mode
+	glsl-mode
+	haskell-emacs
+	idle-highlight-mode
+	lua-mode
+	racket-mode
+	rust-mode
+	vimrc-mode
+	yaml-mode
+	systemd
+	sass-mode
+	nginx-mode
+	dash-at-point
+	))
 
 ;;; Refresh the package list if anything is not installed.
 (when (member nil (mapcar 'package-installed-p config-required-packages))
@@ -77,3 +78,4 @@
 (require 'crystal-mode)
 (add-to-list 'load-path (expand-file-name "lisp/urweb" user-emacs-directory))
 (require 'urweb-mode)
+(require 'workgroups2)

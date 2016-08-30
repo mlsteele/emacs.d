@@ -12,7 +12,7 @@
   (let ((dir (expand-file-name default-directory)))
     (write-region dir nil "~/.cwd-send")
     (cd "/tmp") ; cd to temp so that nohup.out ends up there.
-    (start-process "terminator" nil "nohup" "terminator")
+    (start-process "term" nil "term")
     (cd dir)))
 
 ;;; Big fonts for presentation.
@@ -43,7 +43,7 @@
 (defun new-scratch (seed)
   "Open a new scratch buffer"
   (interactive "sScratch buffer name: ")
-  (let ((name (generate-new-buffer-name seed)))
+  (let ((name (generate-new-buffer-name (concat seed "-scratch"))))
     (switch-to-buffer (concat "*" name "*"))))
 
 ;;; Edit file in sudo with tramp.
@@ -113,3 +113,49 @@
           (rename-buffer new-name)
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil))))))
+
+;;; https://rejeep.github.io/emacs/elisp/2010/03/11/duplicate-current-line-or-region-in-emacs.html
+(defun duplicate-current-line-or-region (arg)
+  "Duplicates the current line or region ARG times.
+If there's no region, the current line will be duplicated. However, if
+there's a region, all lines that region covers will be duplicated."
+  (interactive "p")
+  (let (beg end (origin (point)))
+    (if (and mark-active (> (point) (mark)))
+        (exchange-point-and-mark))
+    (setq beg (line-beginning-position))
+    (if mark-active
+        (exchange-point-and-mark))
+    (setq end (line-end-position))
+    (let ((region (buffer-substring-no-properties beg end)))
+      (dotimes (i arg)
+        (goto-char end)
+        (newline)
+        (insert region)
+        (setq end (point)))
+      (goto-char (+ origin (* (length region) arg) arg)))))
+
+;;; http://blog.binchen.org/posts/how-to-refactorrename-a-variable-name-in-a-function-efficiently.html
+(defun change-symbol-in-defun ()
+  "mark the region in defun (definition of function) and use string replacing UI in evil-mode
+to replace the symbol under cursor"
+  (interactive)
+  (let ((old (thing-at-point 'symbol)))
+	(mark-defun)
+	(unless (evil-visual-state-p)
+	  (evil-visual-state))
+	(evil-ex (concat "'<,'>s/"
+					 (if (= 0 (length old)) "" "\<\(")
+					 old
+					 (if (= 0 (length old)) "" "\)\>/")))))
+
+;;; http://blog.binchen.org/posts/how-to-refactorrename-a-variable-name-in-a-function-efficiently.html
+(defun change-symbol-in-buffer()
+  "use string replacing UI in evil-mode to replace the symbol under cursor in the whole buffer"
+  (interactive)
+  (save-excursion
+	(let ((old (thing-at-point 'symbol)))
+	  (evil-ex (concat "%s/"
+					   (if (= 0 (length old)) "" "\\<\\(")
+					   old
+					   (if (= 0 (length old)) "" "\\)\\>/"))))))

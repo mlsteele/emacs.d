@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: new ProofError
+# key: newperr
+# --
+libkb.NewProofError(keybase1.ProofStatus_${1:TODO}, "${2:}"${3:})$0

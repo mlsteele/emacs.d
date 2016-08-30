@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: prooftype
+# key: prooftype
+# --
+keybase1.ProofType_${1:TWITTER}$0

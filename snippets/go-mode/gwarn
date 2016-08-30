@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: keybase warning
+# key: gwarn
+# --
+g.Log.Warning("${1:%v}"${2:})$0

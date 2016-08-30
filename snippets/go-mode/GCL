@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: globalcontextlite
+# key: gcl
+# --
+g libkb.GlobalContextLite, $0

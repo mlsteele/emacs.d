@@ -11,6 +11,18 @@
   (call-interactively 'evil-paste-after) (evil-normal-state)))
 (define-key evil-normal-state-map (kbd "zx") 'evil-jump-item)
 (define-key evil-normal-state-map (kbd "C-m") 'rotate-word-at-point)
+(define-key evil-normal-state-map (kbd ",c") (lambda () (interactive)
+  (save-excursion (comment-line 1)) (evil-normal-state)))
+(define-key evil-normal-state-map (kbd ",C") (lambda () (interactive)
+  (save-excursion (comment-line 1))
+  (duplicate-current-line-or-region 1)
+  (save-excursion (comment-line 1))
+  (evil-normal-state)))
+(define-key evil-visual-state-map (kbd ",c") (lambda () (interactive)
+  (comment-dwim 1)
+  (evil-normal-state)))
+(define-key evil-insert-state-map (kbd "<C-tab>") 'yas-expand)
+(define-key evil-normal-state-map (kbd "<C-tab>") 'yas-expand)
 
 ;;; Buffer navigation.
 (define-key evil-normal-state-map (kbd ",f") 'find-file)
@@ -31,6 +43,16 @@
 (define-key evil-normal-state-map (kbd ",wj") 'evil-window-down)
 (define-key evil-normal-state-map (kbd ",wk") 'evil-window-up)
 (define-key evil-normal-state-map (kbd ",w1") 'delete-other-windows)
+(define-key evil-normal-state-map (kbd ",wu") 'winner-undo)
+
+;;; Workgroups
+(define-key evil-normal-state-map (kbd ",wws") 'wg-switch-to-workgroup)
+(define-key evil-normal-state-map (kbd ",wwc") 'wg-create-workgroup)
+(define-key evil-normal-state-map (kbd ",wwr") 'wg-rename-workgroup)
+(define-key evil-normal-state-map (kbd ",wwj") 'wg-switch-to-workgroup-right)
+(define-key evil-normal-state-map (kbd ",wwk") 'wg-switch-to-workgroup-left)
+(define-key evil-normal-state-map (kbd ",wwe") 'wg-switch-to-previous-workgroup)
+(define-key evil-normal-state-map (kbd ",www") 'wg-save-session)
 
 ;;; Scroll control.
 (define-key evil-normal-state-map (kbd "z.") 'evil-scroll-line-to-top-ish)
@@ -40,6 +62,9 @@
 (define-key evil-normal-state-map (kbd ",s") 'find-tag)
 (define-key evil-normal-state-map (kbd "s") 'ace-jump-two-chars-mode)
 (define-key evil-normal-state-map (kbd "(") 'insert-with-left-paren)
+
+(define-key evil-normal-state-map (kbd "*") (lambda () (interactive)
+  (evil-search-word-backward) (evil-search-word-forward)))
 
 ;;; Server edit mode.
 (define-key evil-normal-state-map (kbd ",q")
@@ -103,12 +128,25 @@
 ;;; Go mode.
 (defun my-go-mode-hook ()
   ; Call Gofmt before saving
-  ; (add-hook 'before-save-hook 'gofmt-before-save)
   ; Customize compile command to run go build
   (if (not (string-match "go" compile-command))
       (set (make-local-variable 'compile-command)
 	   "go build -v && go vet"))
   ; Godef jump key binding
-  ; (local-set-key (kbd "M-.") 'godef-jump))
+  ;; (local-set-key (kbd ",g") 'godef-jump)
   )
+(define-key evil-normal-state-map (kbd ",g") 'godef-jump)
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+(add-hook 'before-save-hook 'gofmt-before-save)
+
+(defun my-go-compile ()
+  (interactive)
+  (gofmt)
+  (save-buffer)
+  (recompile))
+
+(defun my-compilation-finish (buffer string)
+  (first-error))
+(setq compilation-finish-functions 'my-compilation-finish)
+
+(define-key evil-normal-state-map (kbd ",j") 'my-go-compile)
