@@ -142,11 +142,27 @@
 (defun my-go-compile ()
   (interactive)
   (gofmt)
-  (save-buffer)
+  (recompile))
+
+(defun my-rust-compile ()
+  (interactive)
   (recompile))
 
 (defun my-compilation-finish (buffer string)
-  (first-error))
+  (cond ((string= string "finished")
+		 (first-error)))
+  (let ((o (selected-window))
+		(w (get-buffer-window "*compilation*")))
+	(select-window w)
+	(select-window o)))
+
 (setq compilation-finish-functions 'my-compilation-finish)
 
-(define-key evil-normal-state-map (kbd ",j") 'my-go-compile)
+(defun my-compile ()
+  (interactive)
+  (save-buffer)
+  (cond ((eq major-mode 'go-mode) (my-go-compile))
+		((eq major-mode 'rust-mode) (my-rust-compile))
+		(t (recompile))))
+
+(define-key evil-normal-state-map (kbd ",j") 'my-compile)

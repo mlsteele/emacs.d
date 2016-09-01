@@ -73,6 +73,8 @@
   (setq exec-path (append exec-path (list gopath))))
 
 ;;; Load the go oracle
-(load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
+(let ((oracle-el "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el"))
+  (when (file-exists-p oracle-el)
+                 (load-file oracle-el)))
 
 (winner-mode)
