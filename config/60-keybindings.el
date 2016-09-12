@@ -34,6 +34,14 @@
 (define-key evil-normal-state-map (kbd ",a") 'helm-do-ag-project-root)
 (define-key evil-normal-state-map (kbd ",t") 'launch-terminator)
 
+;;; Multiple cursors
+(define-key evil-normal-state-map (kbd ",xj") 'evil-mc-make-and-goto-next-match)
+(define-key evil-visual-state-map (kbd ",xj") 'evil-mc-make-and-goto-next-match)
+(define-key evil-normal-state-map (kbd ",xk") 'evil-mc-skip-and-goto-next-match)
+(define-key evil-normal-state-map (kbd ",xu") 'evil-mc-undo-all-cursors)
+(define-key evil-normal-state-map (kbd ",xp") 'evil-mc-pause-cursors)
+(define-key evil-normal-state-map (kbd ",xr") 'evil-mc-resume-cursors)
+
 ;;; Window.
 (define-key evil-normal-state-map (kbd ",ws") 'evil-window-split)
 (define-key evil-normal-state-map (kbd ",wv") (lambda () (interactive) (evil-window-vsplit) (evil-window-right 1)))
@@ -138,6 +146,10 @@
 (define-key evil-normal-state-map (kbd ",g") 'godef-jump)
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 (add-hook 'before-save-hook 'gofmt-before-save)
+(dolist (path exec-path)
+  (when (file-exists-p (concat path "/goimports"))
+    (setq gofmt-command "goimports")))
+
 
 (defun my-go-compile ()
   (interactive)
@@ -149,8 +161,8 @@
   (recompile))
 
 (defun my-compilation-finish (buffer string)
-  (cond ((string= string "finished")
-		 (first-error)))
+  (cond ((string= string "finished"))
+		(t (first-error)))
   (let ((o (selected-window))
 		(w (get-buffer-window "*compilation*")))
 	(select-window w)
