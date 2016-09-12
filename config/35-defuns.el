@@ -159,3 +159,16 @@ to replace the symbol under cursor"
 					   (if (= 0 (length old)) "" "\\<\\(")
 					   old
 					   (if (= 0 (length old)) "" "\\)\\>/"))))))
+
+(defun my-focus-window()
+  "make this window the only window and in a nice place down the center third of the frame"
+  (interactive)
+  (let ((blank "blank"))
+	(delete-other-windows)
+	(evil-window-vsplit)
+	(switch-to-buffer blank)
+	(evil-window-right 1)
+	(evil-window-vsplit)
+	(evil-window-right 1)
+	(switch-to-buffer blank)
+	(evil-window-left 1)))
