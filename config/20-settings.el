@@ -36,3 +36,4 @@
 ;;; Add Go to path.
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/go/bin"))
 (setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/go/bin")))
+
