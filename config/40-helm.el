@@ -38,7 +38,6 @@
 ;;; http://tuhdo.github.io/helm-intro.html#sec-2
 
 ;;; CtrlP is helm with projectile
-(define-key evil-normal-state-map (kbd "C-p") 'helm-projectile)
 
 ;;; Symbol browser
 (define-key evil-normal-state-map (kbd "r") 'helm-imenu)
