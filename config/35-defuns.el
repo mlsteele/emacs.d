@@ -172,3 +172,44 @@ to replace the symbol under cursor"
 	(evil-window-right 1)
 	(switch-to-buffer blank)
 	(evil-window-left 1)))
+
+(defun my-doc-at-point ()
+  (interactive)
+  (cond ((eq major-mode 'go-mode) (dash-at-point))
+		((eq major-mode 'cider-mode) (cider-doc))
+		(t (print "no my-doc-at-point for this mode"))))
+
+(defun my-compile-go ()
+  (interactive)
+  (gofmt)
+  (save-buffer)
+  (recompile))
+
+(defun my-compile-rust ()
+  (interactive)
+  (save-buffer)
+  (recompile))
+
+(defun my-compile-default ()
+  (interactive)
+  (save-buffer)
+  (recompile))
+
+(defun my-compile ()
+  (interactive)
+  (save-buffer)
+  (cond ((eq major-mode 'go-mode) (my-compile-go))
+		((eq major-mode 'rust-mode) (my-compile-rust))
+		(t (my-compile-default))))
+
+(defun my-compilation-finish (buffer string)
+  ; The string arg is a status description, also called a process sentinel.
+  ; The form of "string" is described here:
+  ; https://www.gnu.org/software/emacs/manual/html_node/elisp/Sentinels.html
+  ; (message "compilation sentinel: '%s'" string)
+  (cond ((string= string "finished\n") (identity "noop"))
+		(t (first-error)))
+  (let ((o (selected-window))
+		(w (get-buffer-window "*compilation*")))
+	(select-window w)
+	(select-window o)))

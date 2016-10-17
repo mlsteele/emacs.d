@@ -53,6 +53,7 @@
 (define-key evil-normal-state-map (kbd ",wk") 'evil-window-up)
 (define-key evil-normal-state-map (kbd ",w1") 'delete-other-windows)
 (define-key evil-normal-state-map (kbd ",wu") 'winner-undo)
+(define-key evil-normal-state-map (kbd ",wa") 'ace-window)
 
 ;;; Workgroups
 (define-key evil-normal-state-map (kbd ",wws") 'wg-switch-to-workgroup)
@@ -94,6 +95,8 @@
 
 (define-key evil-normal-state-map (kbd ",,s") 'evil-undefine)
 
+(define-key evil-normal-state-map (kbd ",d") 'my-doc-at-point)
+
 ;;; Python mode.
 ;; (define-key evil-normal-state-map (kbd ",r") 'python-shell-send-buffer)
 
@@ -103,7 +106,7 @@
 
 ;;; Cider mode.
 ;; (define-key evil-normal-state-map (kbd ",e") 'cider-eval-last-sexp)
-(define-key evil-normal-state-map (kbd ",d") 'cider-doc)
+; (define-key evil-normal-state-map (kbd ",d") 'cider-doc)
 (defun my-clojure-mode-hook ()
   (interactive)
   ;; (define-key evil-normal-state-map (kbd ",e") 'cider-eval-last-sexp))
@@ -144,38 +147,19 @@
   ; Godef jump key binding
   ;; (local-set-key (kbd ",g") 'godef-jump)
   )
-(define-key evil-normal-state-map (kbd ",g") 'godef-jump)
+
+; (define-key evil-normal-state-map (kbd ",gj") 'godef-jump)
+(define-key evil-normal-state-map (kbd ",gj") 'go-guru-definition)
+(define-key evil-normal-state-map (kbd ",gd") 'go-guru-describe)
+(define-key evil-normal-state-map (kbd ",gi") 'go-guru-implements)
+(define-key evil-normal-state-map (kbd ",gc") 'go-guru-callers)
+
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 (add-hook 'before-save-hook 'gofmt-before-save)
 (dolist (path exec-path)
   (when (file-exists-p (concat path "/goimports"))
     (setq gofmt-command "goimports")))
 
-
-(defun my-go-compile ()
-  (interactive)
-  (gofmt)
-  (recompile))
-
-(defun my-rust-compile ()
-  (interactive)
-  (recompile))
-
-(defun my-compilation-finish (buffer string)
-  (cond ((string= string "finished"))
-		(t (first-error)))
-  (let ((o (selected-window))
-		(w (get-buffer-window "*compilation*")))
-	(select-window w)
-	(select-window o)))
+(define-key evil-normal-state-map (kbd ",j") 'my-compile)
 
 (setq compilation-finish-functions 'my-compilation-finish)
-
-(defun my-compile ()
-  (interactive)
-  (save-buffer)
-  (cond ((eq major-mode 'go-mode) (my-go-compile))
-		((eq major-mode 'rust-mode) (my-rust-compile))
-		(t (recompile))))
-
-(define-key evil-normal-state-map (kbd ",j") 'my-compile)
