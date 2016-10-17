@@ -215,8 +215,10 @@ output of the Go guru tool."
   ;; If the prefix is longer than 20, show "…/last/19chars.go".
   ;; This usually includes the last segment of the package name.
   ;; Hide the line and column numbers.
-  (let ((start compilation-filter-start)
-	(end (point)))
+  (let* ((start compilation-filter-start)
+         (end (point))
+         (ostart start)
+         (oend end))
     (goto-char start)
     (unless (bolp)
       ;; TODO(adonovan): not quite right: the filter may be called
@@ -226,17 +228,19 @@ output of the Go guru tool."
     (setq start (point))
     (while (< start end)
       (let ((p (search-forward ": " end t)))
-	(if (null p)
-	    (setq start end) ; break out of loop
-	  (setq p (1- p)) ; exclude final space
-	  (let* ((posn (buffer-substring-no-properties start p))
-		 (flen (search ":" posn)) ; length of filename
-		 (filename (if (< flen 19)
-			       (substring posn 0 flen)
-			     (concat "…" (substring posn (- flen 19) flen)))))
-	    (put-text-property start p 'display filename)
-	    (forward-line 1)
-	    (setq start (point))))))))
+        (if (null p)
+            (setq start end) ; break out of loop
+          (setq p (1- p)) ; exclude final space
+          (let* ((posn (buffer-substring-no-properties start p))
+                 (flen (search ":" posn)) ; length of filename
+                 (filename (if (< flen 19)
+                               (substring posn 0 flen)
+                             (concat "⇢" (substring posn (- flen 19) flen)))))
+            (put-text-property start p 'display filename)
+            (forward-line 1)
+            (setq start (point))))))
+    ; (replace-string "github.com/keybase/client/go/" "ĸ/" nil ostart oend)
+    ))
 
 (defun go-guru--compilation-start-hook (proc)
   "Erase default output header inserted by `compilation-mode'."
