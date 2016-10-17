@@ -212,7 +212,7 @@ output of the Go guru tool."
 (defun go-guru--compilation-filter-hook ()
   "Post-process a blob of input to the go-guru-output buffer."
   ;; For readability, truncate each "file:line:col:" prefix to a fixed width.
-  ;; If the prefix is longer than 20, show "…/last/19chars.go".
+  ;; If the prefix is longer than 16, show "…/last/15.go".
   ;; This usually includes the last segment of the package name.
   ;; Hide the line and column numbers.
   (let* ((start compilation-filter-start)
@@ -231,12 +231,19 @@ output of the Go guru tool."
         (if (null p)
             (setq start end) ; break out of loop
           (setq p (1- p)) ; exclude final space
-          (let* ((posn (buffer-substring-no-properties start p))
+          (let* (
+                 ;; posn is the position. For example "/foo/bar.go:172.19-172.27:"
+                 (posn (buffer-substring-no-properties start p))
                  (flen (search ":" posn)) ; length of filename
-                 (filename (if (< flen 19)
+                 (maxlen 15)
+                 ;; filename is the shortened version of the path to show
+                 (filename (if (< flen maxlen)
                                (substring posn 0 flen)
-                             (concat "⇢" (substring posn (- flen 19) flen)))))
+                             (concat "⇢" (substring posn (- flen maxlen) flen)))))
             (put-text-property start p 'display filename)
+            (end-of-line)
+            (replace-string "github.com/keybase/client/go/" "" nil p (point))
+            (replace-string ", " ",\n    " nil p (point))
             (forward-line 1)
             (setq start (point))))))
     ; (replace-string "github.com/keybase/client/go/" "ĸ/" nil ostart oend)
