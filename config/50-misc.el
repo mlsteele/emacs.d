@@ -78,3 +78,5 @@
                  (load-file oracle-el)))
 
 (winner-mode)
+
+(setq ring-bell-function 'ignore)
