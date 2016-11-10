@@ -1,4 +1,20 @@
 (1
+ (emacs-profiles .
+		 [(20161013 1530)
+		  ((emacs
+		    (24))
+		   (cl-lib
+		    (0 5))
+		   (prompt-you
+		    (20160925 1115)))
+		  "Configuration profiles for Emacs" single])
+ (prompt-you .
+	     [(20161013 1530)
+	      ((emacs
+		(24))
+	       (cl-lib
+		(0 5)))
+	      "A simple library to prompt user to select from a list of options" single])
  (zone-nyan .
 	    [(0 2 2)
 	     ((esxml
@@ -1531,7 +1547,7 @@
 		  [(0 8)
 		   nil "Various deletion strategies when editing" single])
  (palimpsest .
-	     [(0 8)
+	     [(0 9)
 	      nil "Various deletion strategies when editing" single])
  (pager-default-keybindings .
 			    [(1 1)
@@ -1571,6 +1587,9 @@
  (outlined-elisp-mode .
 		      [(1 0 5)
 		       nil "outline-minor-mode settings for emacs lisp" single])
+ (outer-spaces .
+	       [(20161029 2230)
+		nil "A minimalistic minor-mode to highlight redundant spaces" single])
  (otter-mode .
 	     [(1 2)
 	      nil "Major mode for source files of the Otter automated theorem prover" single])
@@ -3371,7 +3390,7 @@
        (2 2 0)))
      "Modern API for working with files and directories" single])
  (eyebrowse .
-	    [(0 7 0)
+	    [(0 7 1)
 	     ((dash
 	       (2 7 0))
 	      (emacs
