@@ -73,8 +73,9 @@
 (define-key evil-normal-state-map (kbd "s") 'ace-jump-two-chars-mode)
 (define-key evil-normal-state-map (kbd "(") 'insert-with-left-paren)
 
-(define-key evil-normal-state-map (kbd "*") (lambda () (interactive)
-  (evil-search-word-backward) (evil-search-word-forward)))
+; (define-key evil-normal-state-map (kbd "*") (lambda () (interactive)
+;   (evil-search-word-backward) (evil-search-word-forward)))
+(define-key evil-normal-state-map (kbd "*") 'evil-search-word-forward)
 
 ;;; Server edit mode.
 (define-key evil-normal-state-map (kbd ",q")

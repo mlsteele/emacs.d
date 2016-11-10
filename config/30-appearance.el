@@ -16,7 +16,7 @@
 ; (load-theme 'badwolf t)
 ; (load-theme 'solarized-light t)
 ;;; Loading both color schemes in necessary because atom-one-dark doesn't get the linum colors
-(load-theme 'solarized-dark t)
+; (load-theme 'solarized-dark t)
 (load-theme 'atom-one-dark t)
 
 ;;; Relative line numbers

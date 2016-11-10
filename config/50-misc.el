@@ -35,6 +35,7 @@
 
 ;;; Use coffee mode for iced coffee script.
 (add-to-list 'auto-mode-alist '(".iced" . coffee-mode))
+(add-to-list 'auto-mode-alist '(".cson" . coffee-mode))
 
 ;;; Use conf-mode for .gitconfig
 (add-to-list 'auto-mode-alist '(".gitconfig" . conf-mode))

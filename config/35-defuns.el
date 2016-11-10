@@ -203,13 +203,20 @@ to replace the symbol under cursor"
 		(t (my-compile-default))))
 
 (defun my-compilation-finish (buffer string)
-  ; The string arg is a status description, also called a process sentinel.
-  ; The form of "string" is described here:
-  ; https://www.gnu.org/software/emacs/manual/html_node/elisp/Sentinels.html
-  ; (message "compilation sentinel: '%s'" string)
-  (cond ((string= string "finished\n") (identity "noop"))
-		(t (first-error)))
+  ;; The 'string' arg is a status description, also called a process sentinel.
+  ;; The form of 'string' is described here:
+  ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Sentinels.html
+  ;; (message "compilation sentinel: '%s'" string)
   (let ((o (selected-window))
 		(w (get-buffer-window "*compilation*")))
-	(select-window w)
-	(select-window o)))
+	(when w
+	  (cond ((string= string "finished\n") (identity "noop"))
+			(t (first-error)))
+	  (select-window w)
+	  (select-window o))))
+
+(defun remove-dos-eol ()
+  "Do not show ^M in files containing mixed UNIX and DOS line endings."
+  (interactive)
+  (setq buffer-display-table (make-display-table))
+  (aset buffer-display-table ?\^M []))
