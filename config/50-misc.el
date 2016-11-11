@@ -65,7 +65,7 @@
   (bookmark-save))
 
 ;;; Don't truncate lines by default
-(set-default 'truncate-lines t)
+(set-default 'truncate-lines nil)
 
 ;;; Set $GOPATH
 (let ((gopath "/Users/miles/go"))
