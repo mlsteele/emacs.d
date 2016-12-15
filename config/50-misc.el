@@ -49,6 +49,12 @@
 ;;; Use js mode for avdl. Because it's good enough and avdl mode is broken.
 (add-to-list 'auto-mode-alist '(".avdl" . js-mode))
 
+;;; Use typescript mode for .ts
+(add-to-list 'auto-mode-alist '(".ts" . typescript-mode))
+
+;;; Use Go mode for .go
+(add-to-list 'auto-mode-alist '(".go" . go-mode))
+
 (setq browse-url-browser-function 'browse-url-generic
 	  browse-url-generic-program "google-chrome")
 
@@ -81,3 +87,8 @@
 (winner-mode)
 
 (setq ring-bell-function 'ignore)
+
+;;; Create speical buffers as placeholders so they can be session-restored.
+(get-buffer-create "*compilation*")
+(get-buffer-create "*go-guru-output*")
+

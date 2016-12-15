@@ -28,6 +28,7 @@
 (define-key evil-normal-state-map (kbd ",f") 'find-file)
 ;; (define-key evil-normal-state-map (kbd ",f") 'helm-find-files)
 (define-key evil-normal-state-map (kbd ",l") 'helm-buffers-list)
+(define-key evil-normal-state-map (kbd ",L") 'evil-switch-to-windows-last-buffer)
 (define-key evil-normal-state-map (kbd ",b") 'helm-bookmarks)
 (define-key evil-normal-state-map (kbd ",p")  'helm-projectile)
 (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile)
@@ -56,20 +57,29 @@
 (define-key evil-normal-state-map (kbd ",wa") 'ace-window)
 
 ;;; Workgroups
-(define-key evil-normal-state-map (kbd ",wws") 'wg-switch-to-workgroup)
-(define-key evil-normal-state-map (kbd ",wwc") 'wg-create-workgroup)
-(define-key evil-normal-state-map (kbd ",wwr") 'wg-rename-workgroup)
-(define-key evil-normal-state-map (kbd ",wwj") 'wg-switch-to-workgroup-right)
-(define-key evil-normal-state-map (kbd ",wwk") 'wg-switch-to-workgroup-left)
-(define-key evil-normal-state-map (kbd ",wwe") 'wg-switch-to-previous-workgroup)
-(define-key evil-normal-state-map (kbd ",www") 'wg-save-session)
+; (define-key evil-normal-state-map (kbd ",wws") 'wg-switch-to-workgroup)
+; (define-key evil-normal-state-map (kbd ",wwc") 'wg-create-workgroup)
+; (define-key evil-normal-state-map (kbd ",wwr") 'wg-rename-workgroup)
+; (define-key evil-normal-state-map (kbd ",wwj") 'wg-switch-to-workgroup-right)
+; (define-key evil-normal-state-map (kbd ",wwk") 'wg-switch-to-workgroup-left)
+; (define-key evil-normal-state-map (kbd ",wwe") 'wg-switch-to-previous-workgroup)
+; (define-key evil-normal-state-map (kbd ",www") 'wg-save-session)
+(define-key evil-normal-state-map (kbd ",sd") 'wg-switch-to-workgroup)
+(define-key evil-normal-state-map (kbd ",sc") 'wg-create-workgroup)
+(define-key evil-normal-state-map (kbd ",sr") 'wg-rename-workgroup)
+(define-key evil-normal-state-map (kbd ",sj") 'wg-switch-to-workgroup-right)
+(define-key evil-normal-state-map (kbd ",sk") 'wg-switch-to-workgroup-left)
+(define-key evil-normal-state-map (kbd ",sK") 'wg-kill-workgroup)
+(define-key evil-normal-state-map (kbd ",sl") 'wg-switch-to-previous-workgroup)
+(define-key evil-normal-state-map (kbd ",sR") 'wg-reload-session)
+(define-key evil-normal-state-map (kbd ",sW") 'wg-save-session)
 
 ;;; Scroll control.
 (define-key evil-normal-state-map (kbd "z.") 'evil-scroll-line-to-top-ish)
 (define-key evil-visual-state-map (kbd "z.") 'evil-scroll-line-to-top-ish)
 
 ;;; Cursor movement.
-(define-key evil-normal-state-map (kbd ",s") 'find-tag)
+; (define-key evil-normal-state-map (kbd ",s") 'find-tag)
 (define-key evil-normal-state-map (kbd "s") 'ace-jump-two-chars-mode)
 (define-key evil-normal-state-map (kbd "(") 'insert-with-left-paren)
 
@@ -152,6 +162,7 @@
 ; (define-key evil-normal-state-map (kbd ",gj") 'godef-jump)
 (define-key evil-normal-state-map (kbd ",gj") 'go-guru-definition)
 (define-key evil-normal-state-map (kbd ",gd") 'go-guru-describe)
+(define-key evil-normal-state-map (kbd ",gD") 'godef-describe)
 (define-key evil-normal-state-map (kbd ",gi") 'go-guru-implements)
 (define-key evil-normal-state-map (kbd ",gc") 'go-guru-callers)
 
