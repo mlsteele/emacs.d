@@ -1,20 +1,4 @@
 (1
- (emacs-profiles .
-		 [(20161013 1530)
-		  ((emacs
-		    (24))
-		   (cl-lib
-		    (0 5))
-		   (prompt-you
-		    (20160925 1115)))
-		  "Configuration profiles for Emacs" single])
- (prompt-you .
-	     [(20161013 1530)
-	      ((emacs
-		(24))
-	       (cl-lib
-		(0 5)))
-	      "A simple library to prompt user to select from a list of options" single])
  (zone-nyan .
 	    [(0 2 2)
 	     ((esxml
@@ -476,7 +460,7 @@
 	     [(12)
 	      nil "A theme loosely based on Tron: Legacy colors" single])
  (transmission .
-	       [(0 9)
+	       [(0 10)
 		((emacs
 		  (24 4))
 		 (let-alist
@@ -1891,7 +1875,7 @@
 	     [(0 8 8)
 	      nil "Managing multiple terminal buffers in Emacs." single])
  (multi-project .
-		[(0 0 17)
+		[(0 0 18)
 		 nil "Easily work with multiple projects." single])
  (multi-eshell .
 	       [(0 0 1)
@@ -3390,7 +3374,7 @@
        (2 2 0)))
      "Modern API for working with files and directories" single])
  (eyebrowse .
-	    [(0 7 1)
+	    [(0 7 2)
 	     ((dash
 	       (2 7 0))
 	      (emacs
@@ -3575,6 +3559,11 @@
 	      ((json
 		(1 4)))
 	      "View xkcd from Emacs" single])
+ (emacs-sounds .
+	       [(20161211 1530)
+		((sound-wav
+		  (20160725 724)))
+		"Sound effects for Emacs" single])
  (emacs-droid .
 	      [(0 0 0)
 	       nil "Android application development tools for Emacs" single])
