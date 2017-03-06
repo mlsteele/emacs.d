@@ -41,14 +41,8 @@
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
 
-;;; Shortcut for bookmarks.
-(define-key evil-normal-state-map (kbd "M-b") 'helm-bookmarks)
-
 ;;; Shortcut for query replace.
 (define-key evil-normal-state-map (kbd "M-q") 'query-replace)
-
-;;; Shortcut for buffers.
-(define-key evil-normal-state-map (kbd "M-l") 'helm-buffers-list)
 
 (defun move-line-up ()
   "Move a line up one, removing the line before it."

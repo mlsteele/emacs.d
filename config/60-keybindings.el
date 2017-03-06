@@ -25,15 +25,16 @@
 (define-key evil-normal-state-map (kbd "<C-tab>") 'yas-expand)
 
 ;;; Buffer navigation.
-(define-key evil-normal-state-map (kbd ",f") 'find-file)
-;; (define-key evil-normal-state-map (kbd ",f") 'helm-find-files)
+(define-key evil-normal-state-map (kbd ",f") 'helm-find-files)
 (define-key evil-normal-state-map (kbd ",l") 'helm-buffers-list)
 (define-key evil-normal-state-map (kbd ",L") 'evil-switch-to-windows-last-buffer)
 (define-key evil-normal-state-map (kbd ",b") 'helm-bookmarks)
 (define-key evil-normal-state-map (kbd ",p")  'helm-projectile)
 (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile)
+(define-key evil-normal-state-map (kbd ",P")  'helm-projectile-switch-project)
 (define-key evil-normal-state-map (kbd ",k") 'kill-this-buffer)
 (define-key evil-normal-state-map (kbd ",a") 'helm-do-ag-project-root)
+(define-key evil-normal-state-map (kbd ",A") 'helm-do-ag-this-file)
 (define-key evil-normal-state-map (kbd ",t") 'launch-terminator)
 
 ;;; Multiple cursors
@@ -55,6 +56,7 @@
 (define-key evil-normal-state-map (kbd ",w1") 'delete-other-windows)
 (define-key evil-normal-state-map (kbd ",wu") 'winner-undo)
 (define-key evil-normal-state-map (kbd ",wa") 'ace-window)
+(define-key evil-normal-state-map (kbd ",wK") 'ace-delete-window)
 
 ;;; Workgroups
 ; (define-key evil-normal-state-map (kbd ",wws") 'wg-switch-to-workgroup)
@@ -157,6 +159,11 @@
 	   "go build -v && go vet"))
   ; Godef jump key binding
   ;; (local-set-key (kbd ",g") 'godef-jump)
+  ; Custom imenu regexes
+  (setq imenu-generic-expression
+        ; '(("type" "^[ \t]*type *\\([^ \t\n\r\f]*[ \t]*\\(struct\\|interface\\)\\)" 1)
+        '(("type" "^[ \t]*type *\\([^\n\r\f{}]*\\)" 1)
+          ("func" "^func *\\(.*\\)" 1)))
   )
 
 ; (define-key evil-normal-state-map (kbd ",gj") 'godef-jump)

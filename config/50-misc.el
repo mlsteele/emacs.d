@@ -22,7 +22,7 @@
 (add-hook 'change-major-mode-hook 'my-underscore-syntax)
 
 ;;; Use diff-mode for git commit.
-(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . diff-mode))
+(add-to-list 'auto-mode-alist '("\\COMMIT_EDITMSG\\'" . diff-mode))
 
 ;;; Use scala-mode.
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
@@ -31,14 +31,14 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 
 ;;; Use python mode for pythonrc.
-(add-to-list 'auto-mode-alist '(".pythonrc" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.pythonrc\\'" . python-mode))
 
 ;;; Use coffee mode for iced coffee script.
-(add-to-list 'auto-mode-alist '(".iced" . coffee-mode))
-(add-to-list 'auto-mode-alist '(".cson" . coffee-mode))
+(add-to-list 'auto-mode-alist '("\\.iced\\'" . coffee-mode))
+(add-to-list 'auto-mode-alist '("\\.cson\\'" . coffee-mode))
 
 ;;; Use conf-mode for .gitconfig
-(add-to-list 'auto-mode-alist '(".gitconfig" . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.gitconfig\\'" . conf-mode))
 
 ;;; Use sass mode for sass.
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
@@ -47,13 +47,13 @@
 (add-to-list 'auto-mode-alist '("\\.launch\\'" . xml-mode))
 
 ;;; Use js mode for avdl. Because it's good enough and avdl mode is broken.
-(add-to-list 'auto-mode-alist '(".avdl" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.avdl\\'" . c-mode))
 
 ;;; Use typescript mode for .ts
-(add-to-list 'auto-mode-alist '(".ts" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 
 ;;; Use Go mode for .go
-(add-to-list 'auto-mode-alist '(".go" . go-mode))
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 
 (setq browse-url-browser-function 'browse-url-generic
 	  browse-url-generic-program "google-chrome")

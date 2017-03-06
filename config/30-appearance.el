@@ -21,6 +21,7 @@
 
 ;;; Relative line numbers
 (require 'linum-relative)
+(linum-relative-mode t)
 
 ;;; Powerline status line
 (require 'powerline)
