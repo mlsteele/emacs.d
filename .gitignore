@@ -11,5 +11,7 @@
 /url
 /projectile.cache
 /eshell/history
+/eshell/lastdir
+/#!*
 %backup%~
 .DS_Store
