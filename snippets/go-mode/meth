@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: method
+# key: meth
+# --
+func (${1:x} *${2:Type}) ${3:name}(${4:args}) ${5:ret} {
+  $0
+}

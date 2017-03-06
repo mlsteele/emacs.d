@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: struct type
+# key: struct
+# --
+type ${1:name} struct {
+	 $0
+}

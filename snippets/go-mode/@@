@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: debug print
+# key: @@
+# --
+fmt.Printf("@@@ ${1:%+v}\n", ${2:})
+$0
