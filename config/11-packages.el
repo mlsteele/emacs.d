@@ -79,4 +79,5 @@
 (add-to-list 'load-path (expand-file-name "lisp/urweb" user-emacs-directory))
 (require 'urweb-mode)
 (require 'workgroups2)
-(require 'avdl-mode)
+; (require 'avdl-mode)
+; (require 'flow-jsx-mode)

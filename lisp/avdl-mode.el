@@ -25,7 +25,7 @@
 ;; "Class"-like keywords.  Keep the existing ones for things like
 ;; enum.
 (c-lang-defconst c-class-decl-kwds
-  avdl (append '("record" "error" "protocol" "variant") 
+  avdl (append '("record" "error" "protocol") 
 	       (c-lang-const c-class-decl-kwds c++)))
 		
 ;; The expresison after ENUM isn't indented correctly if CC-mode
