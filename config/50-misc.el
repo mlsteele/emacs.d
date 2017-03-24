@@ -29,6 +29,7 @@
 
 ;;; Use jsx-mode.
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.flow\\'" . jsx-mode))
 
 ;;; Use python mode for pythonrc.
 (add-to-list 'auto-mode-alist '("\\.pythonrc\\'" . python-mode))
@@ -54,6 +55,9 @@
 
 ;;; Use Go mode for .go
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+
+;;; Use sh mode for zshrc
+(add-to-list 'auto-mode-alist '("\\.zshrc.*\\'" . sh-mode))
 
 (setq browse-url-browser-function 'browse-url-generic
 	  browse-url-generic-program "google-chrome")
