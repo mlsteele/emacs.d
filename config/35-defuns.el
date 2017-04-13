@@ -40,6 +40,15 @@
   (setq-default js-indent-level 4)
   (setq-default jsx-indent-level 4))
 
+(defun tabs-please ()
+  "Use tab=tab in all respects."
+  (interactive)
+  (setq-default indent-tabs-mode t)
+  (setq-default evil-shift-width 4)
+  (setq-default c-basic-offset 4)
+  (setq-default js-indent-level 4)
+  (setq-default jsx-indent-level 4))
+
 (defun new-scratch (seed)
   "Open a new scratch buffer"
   (interactive "sScratch buffer name: ")
@@ -176,8 +185,10 @@ to replace the symbol under cursor"
 (defun my-doc-at-point ()
   (interactive)
   (cond ((eq major-mode 'go-mode) (dash-at-point))
-		((eq major-mode 'cider-mode) (cider-doc))
-		(t (print "no my-doc-at-point for this mode"))))
+        ((eq major-mode 'cider-mode) (cider-doc))
+        (t (cond
+            ((eq system-type 'darwin) (dash-at-point))
+            (t (zeal-at-point))))))
 
 (defun my-compile-go ()
   (interactive)
