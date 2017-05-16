@@ -220,3 +220,9 @@ to replace the symbol under cursor"
   (interactive)
   (setq buffer-display-table (make-display-table))
   (aset buffer-display-table ?\^M []))
+
+(defun my-highlight-service-log ()
+  "Highlight special words in service logs"
+  (interactive)
+  (highlight-regexp "RunEngine" 'hi-red-b)
+  (highlight-regexp "SharedDHKeyring" 'hi-green-b))

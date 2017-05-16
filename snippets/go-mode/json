@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: json field name
+# key: json
+# --
+\`json:"$1"\`$0
