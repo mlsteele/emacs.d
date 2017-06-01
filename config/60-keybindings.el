@@ -51,6 +51,7 @@
 (define-key evil-normal-state-map (kbd ",wc") 'evil-window-delete)
 (define-key evil-normal-state-map (kbd ",wh") 'evil-window-left)
 (define-key evil-normal-state-map (kbd ",wl") 'evil-window-right)
+(define-key evil-normal-state-map (kbd ",wL") 'my-swap-window-right)
 (define-key evil-normal-state-map (kbd ",wj") 'evil-window-down)
 (define-key evil-normal-state-map (kbd ",wk") 'evil-window-up)
 (define-key evil-normal-state-map (kbd ",w1") 'delete-other-windows)

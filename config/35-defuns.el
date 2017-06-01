@@ -226,3 +226,9 @@ to replace the symbol under cursor"
   (interactive)
   (highlight-regexp "RunEngine" 'hi-red-b)
   (highlight-regexp "SharedDHKeyring" 'hi-green-b))
+
+(defun my-swap-window-right ()
+  "Swap with the window to the right. Leave the cursor on the left."
+  (interactive)
+  (buf-move-right)
+  (windmove-left))
