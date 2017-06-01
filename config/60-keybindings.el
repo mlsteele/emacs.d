@@ -153,6 +153,7 @@
 
 ;;; Go mode.
 (defun my-go-mode-hook ()
+  (go-guru-hl-identifier-mode t)
   (let ((is-test (string-match-p ".*_test\.go\\'" (buffer-file-name))))
     ; Customize compile command to run go build
     (if (not (string-match "go" compile-command))

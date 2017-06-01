@@ -24,6 +24,7 @@
 	ag
 	sudo-edit
 	projectile
+	go-guru
 	go-projectile
 	evil-surround
 	centered-cursor-mode

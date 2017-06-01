@@ -232,3 +232,7 @@ to replace the symbol under cursor"
   (interactive)
   (buf-move-right)
   (windmove-left))
+
+(defun my-go-set-guru-scope ()
+  "Set a particular golang guru scope"
+  (setq go-guru-scope "github.com/keybase/client/go/teams"))
