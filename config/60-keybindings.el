@@ -84,6 +84,7 @@
 ;;; Cursor movement.
 ; (define-key evil-normal-state-map (kbd ",s") 'find-tag)
 (define-key evil-normal-state-map (kbd "s") 'ace-jump-two-chars-mode)
+(define-key evil-normal-state-map (kbd "S") 'ace-jump-mode-pop-mark)
 (define-key evil-normal-state-map (kbd "(") 'insert-with-left-paren)
 
 ; (define-key evil-normal-state-map (kbd "*") (lambda () (interactive)

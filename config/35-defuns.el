@@ -233,6 +233,76 @@ to replace the symbol under cursor"
   (buf-move-right)
   (windmove-left))
 
-(defun my-go-set-guru-scope ()
+(defun set-diff (list1 list2 &optional key)
+  ;; https://stackoverflow.com/questions/10939855/how-to-calculate-difference-between-two-sets-in-emacs-lisp-the-sets-should-be-li
+  "Combine LIST1 and LIST2 using a set-difference operation.
+Optional arg KEY is a function used to extract the part of each list
+item to compare.
+
+The result list contains all items that appear in LIST1 but not LIST2.
+This is non-destructive; it makes a copy of the data if necessary, to
+avoid corrupting the original LIST1 and LIST2."
+  (if (or (null list1)  (null list2))
+      list1
+    (let ((keyed-list2  (and key  (mapcar key list2)))
+          (result       ()))
+      (while list1
+        (unless (if key
+                    (member (funcall key (car list1)) keyed-list2)
+                  (member (car list1) list2))
+          (setq result  (cons (car list1) result)))
+        (setq list1  (cdr list1)))
+      result)))
+
+(defun my-get-go-guru-scope-modules-wide ()
+  """ Lots of modules """
+  (let* ((client-go-path "github.com/keybase/client/go/")
+         (excludes
+          '("."
+            ".."
+            "CHANGELOG.md"
+            "Dockerfile"
+            "LICENSE"
+            "Makefile"
+            "README.md"
+            "bind"
+            "copyright.sh"
+            "copyright.txt"
+            "doc"
+            "notes"
+            "vendor"))
+         (mods (directory-files (format "%s/src/%s" (getenv "GOPATH") client-go-path)))
+         (mods (set-diff mods excludes))
+         (mods-paths (mapcar (function (lambda (x) (concat client-go-path x))) mods))
+         (extras (list "golang.org/x/net/context")))
+    (append mods-paths extras)))
+; Example: (my-get-go-guru-scope-modules)
+
+(defun my-get-go-guru-scope-modules-narrow ()
+  """ Lots of modules """
+  (let* ((client-go-path "github.com/keybase/client/go/")
+         (mods
+          '(
+            "libkb"
+            "chat"
+            "teams"
+            "encrypteddb"
+            ))
+         (mods-paths (mapcar (function (lambda (x) (concat client-go-path x))) mods))
+         (extras (list "golang.org/x/net/context")))
+    (append mods-paths extras)))
+; Example: (my-get-go-guru-scope-modules-narrow)
+
+(defun my-get-go-guru-scope-arg (mods-paths)
+  (mapconcat (function (lambda (x) (format "%s/..." x))) mods-paths ","))
+; Example: (my-get-go-guru-scope-arg (my-get-go-guru-scope-modules-narrow))
+
+(defun my-go-set-guru-scope-wide ()
+  (interactive)
   "Set a particular golang guru scope"
-  (setq go-guru-scope "github.com/keybase/client/go/teams"))
+  (setq go-guru-scope (my-get-go-guru-scope-arg (my-get-go-guru-scope-modules-wide))))
+
+(defun my-go-set-guru-scope-narrow ()
+  (interactive)
+  "Set a particular golang guru scope"
+  (setq go-guru-scope (my-get-go-guru-scope-arg (my-get-go-guru-scope-modules-narrow))))
