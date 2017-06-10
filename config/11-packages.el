@@ -52,6 +52,7 @@
 	lua-mode
 	racket-mode
 	rust-mode
+	racer
 	vimrc-mode
 	yaml-mode
 	systemd
