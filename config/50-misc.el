@@ -92,7 +92,7 @@
 
 (setq ring-bell-function 'ignore)
 
-;;; Create speical buffers as placeholders so they can be session-restored.
+;;; Create special buffers as placeholders so they can be session-restored.
 (get-buffer-create "*compilation*")
 (get-buffer-create "*go-guru-output*")
 

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: json field name (+omitempty)
+# key: jsono
+# --
+\`json:"$1,omitempty"\`$0

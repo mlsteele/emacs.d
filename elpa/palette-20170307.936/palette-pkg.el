@@ -1,0 +1,1 @@
+(define-package "palette" "20170307.936" "Color palette useful with RGB, HSV, and color names" '((hexrgb "0")) :url "https://www.emacswiki.org/emacs/download/palette.el" :keywords '("color" "rgb" "hsv" "hexadecimal" "face" "frame"))

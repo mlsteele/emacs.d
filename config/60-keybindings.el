@@ -51,6 +51,7 @@
 (define-key evil-normal-state-map (kbd ",wc") 'evil-window-delete)
 (define-key evil-normal-state-map (kbd ",wh") 'evil-window-left)
 (define-key evil-normal-state-map (kbd ",wl") 'evil-window-right)
+(define-key evil-normal-state-map (kbd ",wL") 'my-swap-window-right)
 (define-key evil-normal-state-map (kbd ",wj") 'evil-window-down)
 (define-key evil-normal-state-map (kbd ",wk") 'evil-window-up)
 (define-key evil-normal-state-map (kbd ",w1") 'delete-other-windows)
@@ -83,6 +84,7 @@
 ;;; Cursor movement.
 ; (define-key evil-normal-state-map (kbd ",s") 'find-tag)
 (define-key evil-normal-state-map (kbd "s") 'ace-jump-two-chars-mode)
+(define-key evil-normal-state-map (kbd "S") 'ace-jump-mode-pop-mark)
 (define-key evil-normal-state-map (kbd "(") 'insert-with-left-paren)
 
 ; (define-key evil-normal-state-map (kbd "*") (lambda () (interactive)
@@ -152,19 +154,22 @@
 
 ;;; Go mode.
 (defun my-go-mode-hook ()
-  ; Call Gofmt before saving
-  ; Customize compile command to run go build
-  (if (not (string-match "go" compile-command))
-      (set (make-local-variable 'compile-command)
-	   "go build -v && go vet"))
-  ; Godef jump key binding
-  ;; (local-set-key (kbd ",g") 'godef-jump)
-  ; Custom imenu regexes
-  (setq imenu-generic-expression
-        ; '(("type" "^[ \t]*type *\\([^ \t\n\r\f]*[ \t]*\\(struct\\|interface\\)\\)" 1)
-        '(("type" "^[ \t]*type *\\([^\n\r\f{}]*\\)" 1)
-          ("func" "^func *\\(.*\\)" 1)))
-  )
+  (go-guru-hl-identifier-mode t)
+  (let ((is-test (string-match-p ".*_test\.go\\'" (buffer-file-name))))
+    ; Customize compile command to run go build
+    (if (not (string-match "go" compile-command))
+      (cond
+        (is-test (set (make-local-variable 'compile-command) "go test -c"))
+        (t (set (make-local-variable 'compile-command) "go build -v && go vet"))))
+    ; Compile as test if the filename ends in "_test.go"
+    ; Godef jump key binding
+    ;; (local-set-key (kbd ",g") 'godef-jump)
+    ; Custom imenu regexes
+    (setq imenu-generic-expression
+          ; '(("type" "^[ \t]*type *\\([^ \t\n\r\f]*[ \t]*\\(struct\\|interface\\)\\)" 1)
+          '(("type" "^[ \t]*type *\\([^\n\r\f{}]*\\)" 1)
+            ("func" "^func *\\(.*\\)" 1)))
+    ))
 
 ; (define-key evil-normal-state-map (kbd ",gj") 'godef-jump)
 (define-key evil-normal-state-map (kbd ",gj") 'go-guru-definition)
@@ -174,6 +179,7 @@
 (define-key evil-normal-state-map (kbd ",gc") 'go-guru-callers)
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+; Call Gofmt before saving
 (add-hook 'before-save-hook 'gofmt-before-save)
 (dolist (path exec-path)
   (when (file-exists-p (concat path "/goimports"))

@@ -24,6 +24,7 @@
 	ag
 	sudo-edit
 	projectile
+	go-guru
 	go-projectile
 	evil-surround
 	centered-cursor-mode
@@ -51,6 +52,7 @@
 	lua-mode
 	racket-mode
 	rust-mode
+	racer
 	vimrc-mode
 	yaml-mode
 	systemd
