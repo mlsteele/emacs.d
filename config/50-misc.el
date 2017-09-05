@@ -78,7 +78,7 @@
 (set-default 'truncate-lines nil)
 
 ;;; Set $GOPATH
-(let ((gopath "/Users/miles/go"))
+(let ((gopath (expand-file-name "~/go")))
   (setenv "GOPATH" gopath)
   (setenv "PATH" (concat (getenv "PATH") ":" (concat gopath "/bin")))
   (setq exec-path (append exec-path (list gopath))))
