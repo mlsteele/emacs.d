@@ -36,6 +36,7 @@
 (define-key evil-normal-state-map (kbd ",a") 'helm-do-ag-project-root)
 (define-key evil-normal-state-map (kbd ",A") 'helm-do-ag-this-file)
 (define-key evil-normal-state-map (kbd ",t") 'launch-terminator)
+(define-key evil-normal-state-map (kbd ",T") 'toggle-truncate-lines)
 
 ;;; Multiple cursors
 (define-key evil-normal-state-map (kbd ",xj") 'evil-mc-make-and-goto-next-match)
@@ -184,6 +185,9 @@
 (dolist (path exec-path)
   (when (file-exists-p (concat path "/goimports"))
     (setq gofmt-command "goimports")))
+; (dolist (path exec-path)
+;   (when (file-exists-p (concat path "/goreturns"))
+;     (setq gofmt-command "goreturns")))
 
 (define-key evil-normal-state-map (kbd ",j") 'my-compile)
 
