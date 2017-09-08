@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: debug clog
+# key: cdl
+# --
+${1:G}.Log.CDebugf(ctx, "@@@ ${3:%+v}", $2)$0
