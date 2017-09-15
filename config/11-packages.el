@@ -16,6 +16,12 @@
 	helm-descbinds
 	helm-projectile
 	helm-ag
+
+	ivy
+	counsel
+	swiper
+	counsel-projectile
+
 	powerline
 	powerline-evil
 	solarized-theme
