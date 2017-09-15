@@ -25,16 +25,15 @@
 (define-key evil-normal-state-map (kbd "<C-tab>") 'yas-expand)
 
 ;;; Buffer navigation.
-(define-key evil-normal-state-map (kbd ",f") 'helm-find-files)
-(define-key evil-normal-state-map (kbd ",l") 'helm-buffers-list)
+(define-key evil-normal-state-map (kbd ",f") 'counsel-find-file)
+(define-key evil-normal-state-map (kbd ",l") 'ivy-switch-buffer)
 (define-key evil-normal-state-map (kbd ",L") 'evil-switch-to-windows-last-buffer)
 (define-key evil-normal-state-map (kbd ",b") 'helm-bookmarks)
-(define-key evil-normal-state-map (kbd ",p")  'helm-projectile)
-(define-key evil-normal-state-map (kbd "C-p") 'helm-projectile)
-(define-key evil-normal-state-map (kbd ",P")  'helm-projectile-switch-project)
+(define-key evil-normal-state-map (kbd ",p")  'counsel-projectile)
+(define-key evil-normal-state-map (kbd ",P")  'counsel-projectile-switch-project)
 (define-key evil-normal-state-map (kbd ",k") 'kill-this-buffer)
-(define-key evil-normal-state-map (kbd ",a") 'helm-do-ag-project-root)
-(define-key evil-normal-state-map (kbd ",A") 'helm-do-ag-this-file)
+(define-key evil-normal-state-map (kbd ",a") 'counsel-projectile-ag)
+(define-key evil-normal-state-map (kbd ",A") 'swiper)
 (define-key evil-normal-state-map (kbd ",t") 'launch-terminator)
 (define-key evil-normal-state-map (kbd ",T") 'toggle-truncate-lines)
 
