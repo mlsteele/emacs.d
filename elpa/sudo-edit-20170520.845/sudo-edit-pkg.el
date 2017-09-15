@@ -1,1 +1,0 @@
-(define-package "sudo-edit" "20170520.845" "Open files as another user" '((emacs "24") (cl-lib "0.5")) :commit "0e079e12cba524dc9745f30cbd6e8c553679b624" :url "https://github.com/nflath/sudo-edit" :keywords '("convenience"))
