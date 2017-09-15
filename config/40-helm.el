@@ -50,3 +50,9 @@
 	 (mapcar (lambda (b)
 		   (when (buffer-file-name b) (buffer-name b)))
 		 (buffer-list)))))
+
+; (custom-set-variables
+;  '(helm-ag-base-command "echo hi-this-is-testing"))
+
+; (custom-set-variables
+;  '(helm-ag-base-command "ag --nocolor --nogroup"))
