@@ -1,3 +1,6 @@
+;;; Extra quit key
+;; (global-set-key (kbd "s-g") 'keyboard-quit) ; doesn't work
+
 ;;; Help commands.
 (define-key evil-normal-state-map (kbd ",hk") 'describe-key)
 (define-key evil-normal-state-map (kbd ",hv") 'describe-variable)
@@ -116,7 +119,7 @@
 ;; (define-key evil-normal-state-map (kbd ",r") 'python-shell-send-buffer)
 
 ;;; Haskell mode.
-(define-key evil-normal-state-map (kbd ",r") 'haskell-process-load-file)
+;; (define-key evil-normal-state-map (kbd ",r") 'haskell-process-load-file)
 ;; (define-key evil-normal-state-map (kbd ",d") 'haskell-doc-show-type)
 
 ;;; Cider mode.
@@ -177,6 +180,9 @@
 (define-key evil-normal-state-map (kbd ",gD") 'godef-describe)
 (define-key evil-normal-state-map (kbd ",gi") 'go-guru-implements)
 (define-key evil-normal-state-map (kbd ",gc") 'go-guru-callers)
+
+(define-key evil-normal-state-map (kbd ",rj") 'racer-find-definition)
+(define-key evil-normal-state-map (kbd ",rd") 'racer-describe)
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 ; Call Gofmt before saving

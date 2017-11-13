@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: recover
+# key: recover
+# --
+if r := recover(); r != nil {
+	$0fmt.Printf("recovered: %v\n", r)
+}
