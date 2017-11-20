@@ -32,3 +32,7 @@
 (setq frame-title-format
     '("%S" (buffer-file-name "%f"
 		(dired-directory dired-directory "%b"))))
+
+;;; These are desirable but the face is not bound this early when loading.
+;;;(set-face-attribute 'go-guru-hl-identifier-face nil :background "#782c34")
+;;;(set-face-attribute 'go-guru-hl-identifier-face nil :foreground "#bf76cd")
