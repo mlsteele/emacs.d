@@ -1,5 +1,6 @@
 ;;; Extra quit key
 ;; (global-set-key (kbd "s-g") 'keyboard-quit) ; doesn't work
+(global-set-key (kbd "s-g") 'keyboard-escape-quit)
 
 ;;; Help commands.
 (define-key evil-normal-state-map (kbd ",hk") 'describe-key)
@@ -34,8 +35,8 @@
 (define-key evil-normal-state-map (kbd ",b") 'helm-bookmarks)
 (define-key evil-normal-state-map (kbd ",p")  'counsel-projectile)
 (define-key evil-normal-state-map (kbd ",P")  'counsel-projectile-switch-project)
-(define-key evil-normal-state-map (kbd ",k") 'kill-this-buffer)
-(define-key evil-normal-state-map (kbd ",a") 'counsel-projectile-ag)
+(define-key evil-normal-state-map (kbd ",K") 'kill-this-buffer)
+(define-key evil-normal-state-map (kbd ",a") 'counsel-projectile-rg)
 (define-key evil-normal-state-map (kbd ",A") 'swiper)
 (define-key evil-normal-state-map (kbd ",t") 'launch-terminator)
 (define-key evil-normal-state-map (kbd ",T") 'toggle-truncate-lines)
@@ -113,7 +114,7 @@
 
 (define-key evil-normal-state-map (kbd ",,s") 'evil-undefine)
 
-(define-key evil-normal-state-map (kbd ",d") 'my-doc-at-point)
+;; (define-key evil-normal-state-map (kbd ",d") 'my-doc-at-point)
 
 ;;; Python mode.
 ;; (define-key evil-normal-state-map (kbd ",r") 'python-shell-send-buffer)
@@ -175,8 +176,8 @@
     ))
 
 ; (define-key evil-normal-state-map (kbd ",gj") 'godef-jump)
-(define-key evil-normal-state-map (kbd ",gj") 'go-guru-definition)
-(define-key evil-normal-state-map (kbd ",gd") 'go-guru-describe)
+(define-key evil-normal-state-map (kbd ",j") 'go-guru-definition)
+(define-key evil-normal-state-map (kbd ",d") 'go-guru-describe)
 (define-key evil-normal-state-map (kbd ",gD") 'godef-describe)
 (define-key evil-normal-state-map (kbd ",gi") 'go-guru-implements)
 (define-key evil-normal-state-map (kbd ",gc") 'go-guru-callers)
@@ -194,6 +195,6 @@
 ;   (when (file-exists-p (concat path "/goreturns"))
 ;     (setq gofmt-command "goreturns")))
 
-(define-key evil-normal-state-map (kbd ",j") 'my-compile)
+(define-key evil-normal-state-map (kbd ",m") 'my-compile)
 
 (setq compilation-finish-functions 'my-compilation-finish)

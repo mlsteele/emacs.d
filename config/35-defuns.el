@@ -331,3 +331,17 @@ avoid corrupting the original LIST1 and LIST2."
   (interactive)
   "Set a particular golang guru scope"
   (setq go-guru-scope (my-get-go-guru-scope-arg (my-get-go-guru-scope-modules-narrow))))
+
+;;; https://emacs.stackexchange.com/questions/9989/add-window-to-the-right-of-two-horizontally-split-windows
+(defun my-split-root-window (size direction)
+  (split-window (frame-root-window)
+                (and size (prefix-numeric-value size))
+                direction))
+
+(defun my-split-root-window-below (&optional size)
+  (interactive "P")
+  (my-split-root-window size 'below))
+
+(defun my-split-root-window-right (&optional size)
+  (interactive "P")
+  (my-split-root-window size 'right))
