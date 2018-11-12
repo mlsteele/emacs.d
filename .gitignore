@@ -16,3 +16,4 @@
 %backup%~
 .DS_Store
 /abbrev_defs
+/session.*
