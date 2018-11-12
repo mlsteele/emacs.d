@@ -178,9 +178,11 @@
             ("func" "^func *\\(.*\\)" 1)))
     ))
 
-; (define-key evil-normal-state-map (kbd ",gj") 'godef-jump)
 (define-key evil-normal-state-map (kbd ",j") 'go-guru-definition)
-(define-key evil-normal-state-map (kbd ",d") 'go-guru-describe)
+; (define-key evil-normal-state-map (kbd ",gj") 'godef-jump)
+(define-key evil-normal-state-map (kbd ",gj") 'go-guru-definition)
+(define-key evil-normal-state-map (kbd ",gd") 'go-guru-describe)
+(define-key evil-normal-state-map (kbd ",d")  'go-guru-describe)
 (define-key evil-normal-state-map (kbd ",gD") 'godef-describe)
 (define-key evil-normal-state-map (kbd ",gi") 'go-guru-implements)
 (define-key evil-normal-state-map (kbd ",gc") 'go-guru-callers)

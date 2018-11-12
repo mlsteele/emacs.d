@@ -64,6 +64,7 @@
 	systemd
 	sass-mode
 	nginx-mode
+	elm-mode
 	dash-at-point
 	))
 

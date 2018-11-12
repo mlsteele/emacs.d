@@ -53,6 +53,7 @@
 
 ;;; Use typescript mode for .ts
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
 ;;; Use Go mode for .go
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
