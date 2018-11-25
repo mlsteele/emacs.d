@@ -85,6 +85,9 @@
 (define-key evil-normal-state-map (kbd "z.") 'evil-scroll-line-to-top-ish)
 (define-key evil-visual-state-map (kbd "z.") 'evil-scroll-line-to-top-ish)
 
+;;; Misc.
+(define-key evil-normal-state-map (kbd ",W") 'whitespace-mode)
+
 ;;; Cursor movement.
 ; (define-key evil-normal-state-map (kbd ",s") 'find-tag)
 (define-key evil-normal-state-map (kbd "s") 'ace-jump-two-chars-mode)
@@ -196,5 +199,6 @@
 ;     (setq gofmt-command "goreturns")))
 
 (define-key evil-normal-state-map (kbd ",m") 'my-compile)
+(define-key evil-normal-state-map (kbd ",M") 'compile)
 
 (setq compilation-finish-functions 'my-compilation-finish)

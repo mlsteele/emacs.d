@@ -37,6 +37,7 @@
 ;;; Use coffee mode for iced coffee script.
 (add-to-list 'auto-mode-alist '("\\.iced\\'" . coffee-mode))
 (add-to-list 'auto-mode-alist '("\\.cson\\'" . coffee-mode))
+(add-to-list 'auto-mode-alist '("\\.toffee\\'" . coffee-mode))
 
 ;;; Use conf-mode for .gitconfig
 (add-to-list 'auto-mode-alist '("\\.gitconfig\\'" . conf-mode))
@@ -95,4 +96,3 @@
 ;;; Create special buffers as placeholders so they can be session-restored.
 (get-buffer-create "*compilation*")
 (get-buffer-create "*go-guru-output*")
-

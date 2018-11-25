@@ -89,3 +89,4 @@
 (require 'workgroups2)
 ; (require 'avdl-mode)
 ; (require 'flow-jsx-mode)
+(require 'rotate)

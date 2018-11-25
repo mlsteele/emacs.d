@@ -4,7 +4,9 @@
   '(("yes" "no")
     ("true" "false")
     ("True" "False")
-    ("width" "height"))
+    ("width" "height")
+    ("x" "y")
+    ("0" "1"))
   "List of text rotation sets.")
 
 (defun rotate-region (beg end)
@@ -96,3 +98,5 @@ Example:
 ;;     (indent-for-tab-command)))
 
 ;; (local-set-key [tab] 'indent-or-rotate)
+
+(provide 'rotate)

@@ -14,3 +14,4 @@
        (files (directory-files dir t "^..-.*\.el$")))
   (dolist (file files)
     (load file)))
+(put 'narrow-to-region 'disabled nil)
