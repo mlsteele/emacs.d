@@ -94,6 +94,9 @@
 (define-key evil-normal-state-map (kbd "S") 'ace-jump-mode-pop-mark)
 (define-key evil-normal-state-map (kbd "(") 'insert-with-left-paren)
 
+;;; Misc
+(define-key evil-normal-state-map (kbd ",W") 'whitespace-mode)
+
 ; (define-key evil-normal-state-map (kbd "*") (lambda () (interactive)
 ;   (evil-search-word-backward) (evil-search-word-forward)))
 (define-key evil-normal-state-map (kbd "*") 'evil-search-word-forward)
