@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: meta context
+# key: mc
+# --
+mctx libkb.MetaContext
