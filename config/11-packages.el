@@ -91,3 +91,4 @@
 ; (require 'avdl-mode)
 ; (require 'flow-jsx-mode)
 (require 'rotate)
+(require 'fira-code-mode)
