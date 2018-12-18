@@ -345,3 +345,14 @@ avoid corrupting the original LIST1 and LIST2."
 (defun my-split-root-window-right (&optional size)
   (interactive "P")
   (my-split-root-window size 'right))
+
+; From https://gist.github.com/sideshowcoder/0d37c53bbf1d62299600bb723cc20af0
+(defun my-go-guru-set-current-package-as-main ()
+  "GoGuru requires the scope to be set to a go package which
+   contains a main, this function will make the current package the
+   active go guru scope, assuming it contains a main"
+  (interactive)
+  (let* ((filename (buffer-file-name))
+         (gopath-src-path (concat (file-name-as-directory (go-guess-gopath)) "src"))
+         (relative-package-path (directory-file-name (file-name-directory (file-relative-name filename gopath-src-path)))))
+    (setq go-guru-scope relative-package-path)))

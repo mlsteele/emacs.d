@@ -4,6 +4,21 @@
 (setq haskell-process-path-cabal "/home/config/.local/bin/cabal")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
+;; Fira ligatures
+; Using FiraCode ligatures from https://github.com/tonsky/FiraCode
+; This works on macos using Mitsuharu Yamamoto's build of emacs.
+; Instructions: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
+; Download link: https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632
+; Emacs build: https://bitbucket.org/mituharu/emacs-mac/overview
+
+(add-hook 'js-mode-hook 'my-js-mode-hook)
+(defun my-js-mode-hook ()
+  (fira-code-mode 1))
+
+(add-hook 'go-mode-hook 'my-go-mode-hook)
+(defun my-go-mode-hook ()
+  (fira-code-mode 1))
+
 ;;; Cleanup spacing.
 ; (add-hook 'before-save-hook 'whitespace-cleanup)
 ; (remove-hook 'before-save-hook 'whitespace-cleanup)
