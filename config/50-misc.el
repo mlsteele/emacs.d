@@ -1,6 +1,18 @@
 ;;; Enable surround mode.
 (global-evil-surround-mode)
 
+; ; https://emacsredux.com/blog/2013/06/25/boost-performance-by-leveraging-byte-compilation/
+; (defun my-remove-elc-on-save ()
+;   "Delete the compiled .elc when saving an .el"
+;   (add-hook 'after-save-hook
+;             (lambda ()
+;               (if (file-exists-p (concat buffer-file-name "c"))
+;                   (delete-file (concat buffer-file-name "c"))))
+;             nil
+;             t))
+
+;; (add-hook 'emacs-lisp-mode-hook 'my-remove-elc-on-save)
+
 (setq haskell-process-path-cabal "/home/config/.local/bin/cabal")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 

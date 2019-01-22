@@ -356,3 +356,9 @@ avoid corrupting the original LIST1 and LIST2."
          (gopath-src-path (concat (file-name-as-directory (go-guess-gopath)) "src"))
          (relative-package-path (directory-file-name (file-name-directory (file-relative-name filename gopath-src-path)))))
     (setq go-guru-scope relative-package-path)))
+
+; https://emacsredux.com/blog/2013/06/25/boost-performance-by-leveraging-byte-compilation/
+; (defun my-compile-init-dir ()
+;   "Byte-compile dotfiles"
+;   (interactive)
+;   (byte-recompile-directory user-emacs-directory 0))
