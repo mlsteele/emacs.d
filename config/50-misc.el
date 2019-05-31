@@ -88,8 +88,10 @@
 ;;; Use sh mode for zshrc
 (add-to-list 'auto-mode-alist '("\\.zshrc.*\\'" . sh-mode))
 
+; (setq browse-url-browser-function 'browse-url-generic
+; 	  browse-url-generic-program "google-chrome")
 (setq browse-url-browser-function 'browse-url-generic
-	  browse-url-generic-program "google-chrome")
+	  browse-url-generic-program "firefox")
 
 (require 'ansi-color)
 (defun display-ansi-colors ()
@@ -124,3 +126,6 @@
 ;;; Create special buffers as placeholders so they can be session-restored.
 (get-buffer-create "*compilation*")
 (get-buffer-create "*go-guru-output*")
+
+;;; Show the code for svgs
+(setq image-file-name-extensions (remove "svg" image-file-name-extensions))

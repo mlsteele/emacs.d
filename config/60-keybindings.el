@@ -27,6 +27,7 @@
   (evil-normal-state)))
 (define-key evil-insert-state-map (kbd "<C-tab>") 'yas-expand)
 (define-key evil-normal-state-map (kbd "<C-tab>") 'yas-expand)
+(define-key evil-normal-state-map (kbd "R") 'lua-send-buffer)
 
 ;;; Buffer navigation.
 (define-key evil-normal-state-map (kbd ",f") 'counsel-find-file)
@@ -154,7 +155,7 @@
 (eval-after-load 'proof-script '(my-proof-general-mode-hook))
 
 ;;; Lua mode.
-(define-key evil-normal-state-map (kbd "R") 'lua-send-buffer)
+;; (define-key evil-normal-state-map (kbd "R") 'lua-send-buffer)
 
 ;;; eshell mode.
 (defun my-eshell-mode-setup-keys ()
